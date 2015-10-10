@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<title>Inclusão de Pessoas</title>
+	<!-- 	<h:outputStylesheet library="css" name="styles.css"></h:outputStylesheet> -->
+</h:head>
+<!-- <ui:include src="../cabecalho.xhtml"></ui:include> -->
+<h:body>
+
+	<h:form>
+
+		<h:panelGrid columns="2" >
+		
+			<h:outputLabel id="idPessoaLabel" value="IdPessoa: "
+				for="idPessoaCampo" />
+			<h:panelGroup>
+				<h:inputText id="idPessoaCampo"
+					value="#{pessoaBean.registro.idPessoa}" size="10" maxlength="10"
+					required="true" requiredMessage="Identificador obrigatario."
+					converterMessage="Identificador deve ser um valor numarico.">
+					<f:converter converterId="javax.faces.Integer" />
+				</h:inputText>
+				<h:message for="idPessoaCampo" showSummary="true" showDetail="false" />
+			</h:panelGroup>
+			
+			
+			<h:outputLabel id="idNomeLabel" value="Nome: " for="idNomeCampo" />
+			<h:panelGroup>
+				<h:inputText id="idNomeCampo" value="#{pessoaBean.registro.nome}"
+					size="45" maxlength="45" required="true"
+					requiredMessage="O nome a obrigatario." />
+				<h:message for="idNomeCampo" showSummary="true" showDetail="false" />
+			</h:panelGroup>
+			
+			<h:outputLabel id="idEnderecoLabel" value="Endereço: "
+				for="idEnderecoCampo" />
+			<h:panelGroup>
+				<h:inputText id="idEnderecoCampo"
+					value="#{pessoaBean.registro.endereco}" size="45" maxlength="150"
+					required="true" requiredMessage="O endereco é obrigatario." />
+				<h:message for="idEnderecoCampo" showSummary="true"
+					showDetail="false" />
+			</h:panelGroup>
+			
+			
+			<h:outputLabel id="idEmailLabel" value="E-mail: " for="idEmailCampo" />
+			<h:panelGroup>
+				<h:inputText id="idEmailCampo" value="#{pessoaBean.registro.email}"
+					size="45" maxlength="100" required="true"
+					requiredMessage="O e-mail é obrigatario." />
+				<h:message for="idEmailCampo" showSummary="true" showDetail="false" />
+			</h:panelGroup>
+			
+			
+			<h:outputLabel id="idTelefoneLabel"
+				value="Telefone: " for="idTelefoneCampo" />
+			<h:panelGroup>
+				<h:inputText id="idTelefoneCampo"
+					value="#{pessoaBean.registro.telefone}" size="20" maxlength="15"
+					required="true" requiredMessage="O telefone é obrigatario." /><h:outputLabel id="infoTel" value=" (Ex: 061 81513419)" />
+				<h:message for="idTelefoneCampo" showSummary="true"
+					showDetail="false" />
+			</h:panelGroup>
+			
+			
+		
+						
+			<h:outputLabel />
+			<h:panelGroup>
+				<h:commandButton id="incluir" value="Incluir" actionListener="#{pessoaBean.incluir}" type="submit" />
+				<h:commandButton id="limpar" value="Limpar" type="reset" />
+			</h:panelGroup>
+		</h:panelGrid>
+	</h:form>
+
+</h:body>
+<ui:include src="../rodape.xhtml"></ui:include>
+</html>
