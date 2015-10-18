@@ -6,8 +6,10 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
+import javax.faces.event.ActionEvent;
 
 import org.hibernate.HibernateException;
+import org.hibernate.ObjectNotFoundException;
 import org.hibernate.exception.ConstraintViolationException;
 
 import br.ucb.hibernate.GenericWorker;
@@ -47,6 +49,59 @@ public class PessoaBean implements Serializable {
 			e.printStackTrace();
 		}
 		return "sucesso";
+	}
+	
+	public String alterar(ActionEvent event) {
+//		if (acessoBean.isValid()) {
+			try {
+				GenericWorker<Pessoa, Integer> regHBR = new GenericWorker<Pessoa, Integer>(Pessoa.class);
+				if (regHBR.altera(registro)) {
+					FacesContext context = FacesContext.getCurrentInstance();
+					context.addMessage(null, new FacesMessage(
+							FacesMessage.SEVERITY_INFO, "INFO!",
+							"Registro alterado com sucesso."));
+				}
+				regHBR.finalize();
+			} catch (ObjectNotFoundException e) {
+				FacesContext context = FacesContext.getCurrentInstance();
+				context.addMessage(null, new FacesMessage(
+						FacesMessage.SEVERITY_ERROR, "ERRO!",
+						"Objeto não localizado."));
+				e.printStackTrace();
+			} catch (HibernateException e) {
+				FacesContext context = FacesContext.getCurrentInstance();
+				context.addMessage(null, new FacesMessage(
+						FacesMessage.SEVERITY_ERROR, "ERRO!",
+						"Falha na exclusão dos dados."));
+				e.printStackTrace();
+			}
+			return "sucesso";
+//		} else
+//			return "insucesso";
+	}
+	
+	public String consultar(ActionEvent event) {
+//		if (acessoBean.isValid()) {
+			try {
+				GenericWorker<Pessoa, Integer> regHBR = new GenericWorker<Pessoa, Integer>(	Pessoa.class);
+				registro = (Pessoa) regHBR.consulta(registro.getIdPessoa());
+				regHBR.finalize();
+			} catch (ObjectNotFoundException e) {
+				FacesContext context = FacesContext.getCurrentInstance();
+				context.addMessage(null, new FacesMessage(
+						FacesMessage.SEVERITY_ERROR, "ERRO!",
+						"Objeto não localizado."));
+				e.printStackTrace();
+			} catch (HibernateException e) {
+				FacesContext context = FacesContext.getCurrentInstance();
+				context.addMessage(null, new FacesMessage(
+						FacesMessage.SEVERITY_ERROR, "ERRO!",
+						"Falha de consulta aos dados."));
+				e.printStackTrace();
+			}
+			return "sucesso";
+//		} else
+//			return "insucesso";
 	}
 
 	public Pessoa getRegistro() {
