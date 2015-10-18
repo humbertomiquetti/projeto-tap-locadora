@@ -7,14 +7,14 @@
 	<title>Listagem de Pessoas</title>
 	<h:outputStylesheet library="css" name="styles.css"></h:outputStylesheet>
 </h:head>
-<!-- <ui:include src="../cabecalho.xhtml"></ui:include> -->
+<ui:include src="../cabecalho.xhtml"></ui:include>
 <h:body>
 	<f:view>
 		<h:form>
 		<h:panelGrid columns="1">
 			<f:facet name="header">	<h:outputText value="Listagem de Pessoas" styleClass="emphasis" /></f:facet>
 			
-			<h:dataTable var="pes" value="#{listaTudoPessoaBean.listagem}" styleClass="tabela">
+			<h:dataTable var="pes" value="#{listaTudoPessoaBean.listagem}" styleClass="tabela" border="10">
 			
 				<h:column>
 					<f:facet name="header">

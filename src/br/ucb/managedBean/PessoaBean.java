@@ -103,6 +103,34 @@ public class PessoaBean implements Serializable {
 //		} else
 //			return "insucesso";
 	}
+	
+	public String excluir(ActionEvent event) {
+//		if (acessoBean.isValid()) {
+			try {
+				GenericWorker<Pessoa, Integer> regHBR1 = new GenericWorker<Pessoa, Integer>(Pessoa.class);
+				registro = (Pessoa) regHBR1.consulta(registro.getIdPessoa());
+				regHBR1.finalize();
+				GenericWorker<Pessoa, Integer> regHBR = new GenericWorker<Pessoa, Integer>(Pessoa.class);
+				if (regHBR.exclui(registro)) {
+					FacesContext context = FacesContext.getCurrentInstance();
+					context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "INFO!", "Registro excluído com sucesso."));
+				}
+				regHBR.finalize();
+			} catch (ObjectNotFoundException e) {
+				FacesContext context = FacesContext.getCurrentInstance();
+				context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERRO!",	"Objeto não localizado."));
+				e.printStackTrace();
+
+			} catch (HibernateException e) {
+				FacesContext context = FacesContext.getCurrentInstance();
+				context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERRO!", "Falha na exclusão dos dados."));
+				e.printStackTrace();
+			}
+			return "sucesso";
+//		} else
+//			return "insucesso";
+	}
+
 
 	public Pessoa getRegistro() {
 		return registro;

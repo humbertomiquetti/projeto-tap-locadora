@@ -5,7 +5,7 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core">
 <h:head>
-	<title>Consulta de Pessoa</title>
+	<title>Consulta de Pessoas</title>
 	<h:outputStylesheet library="css" name="styles.css"></h:outputStylesheet>
 </h:head>
 <ui:include src="../cabecalho.xhtml"></ui:include>
@@ -13,7 +13,11 @@
 	<f:view>
 		<h:form>
 			<h:panelGrid columns="3">
-				<f:facet name="header"><h:outputText value="Consulta de Pessoa" styleClass="emphasis" /></f:facet>
+				
+				<f:facet name="header">
+					<h:outputText value="Consulta de Pessoa" styleClass="emphasis" />
+				</f:facet>
+				
 				<h:outputLabel value="IdPessoa: " for="idPessoaCampo" id="idPessoaLabel" />
 				<h:panelGroup>
 					<h:inputText id="idPessoaCampo" value="#{pessoaBean.registro.idPessoa}" size="10" maxlength="10" required="true" requiredMessage="O identificador obrigatorio." converterMessage="Identificador deve ser um valor numrico.">
@@ -21,25 +25,28 @@
 					</h:inputText>
 					<h:message for="idPessoaCampo" showSummary="true" showDetail="false" />
 				</h:panelGroup>
+				
 				<h:commandButton id="consultar" value="Consultar" actionListener="#{pessoaBean.consultar}" type="submit" />
+			
 			</h:panelGrid>
 			<h:panelGrid columns="2">
+				
 				<h:outputText value="IdPessoa:"	rendered="#{pessoaBean.registro.idPessoa != null}" />
 				<h:outputText value=" #{pessoaBean.registro.idPessoa}"	rendered="#{pessoaBean.registro.idPessoa != null}" />
+				
 				<h:outputText value="Nome:"	rendered="#{pessoaBean.registro.idPessoa != null}" />
 				<h:outputText value=" #{pessoaBean.registro.nome}"	rendered="#{pessoaBean.registro.nome != null}" />
-				<h:outputText value="CPF:"	rendered="#{pessoaBean.registro.idPessoa != null}" />
-				<h:outputText value=" #{pessoaBean.registro.cpf}" rendered="#{pessoaBean.registro.cpf != null}" />
-				<h:outputText value="RG:" rendered="#{pessoaBean.registro.idPessoa != null}" />
-				<h:outputText value=" #{pessoaBean.registro.rg}" rendered="#{pessoaBean.registro.rg != null}" />
-				<h:outputText value="Orgao:" rendered="#{pessoaBean.registro.idPessoa != null}" />
-				<h:outputText value=" #{pessoaBean.registro.orgaoExpedicao}" rendered="#{pessoaBean.registro.orgaoExpedicao != null}" />
-				<h:outputText value="Nascimento:" rendered="#{pessoaBean.registro.idPessoa != null}" />
-				<h:outputText value=" #{pessoaBean.registro.dataNascimento}" rendered="#{pessoaBean.registro.dataNascimento != null}" />
+								
+				<h:outputText value="Endereo:" rendered="#{pessoaBean.registro.idPessoa != null}" />
+				<h:outputText value=" #{pessoaBean.registro.endereco}" rendered="#{pessoaBean.registro.endereco != null}" />
+				
+				<h:outputText value="Endereo:" rendered="#{pessoaBean.registro.idPessoa != null}" />
+				<h:outputText value=" #{pessoaBean.registro.email}" rendered="#{pessoaBean.registro.email != null}" />
+				
 				<h:outputText value="Telefone:" rendered="#{pessoaBean.registro.idPessoa != null}" />
 				<h:outputText value=" #{pessoaBean.registro.telefone}" rendered="#{pessoaBean.registro.telefone != null}" />
-				<h:outputText value="Endereo:" rendered="#{pessoaBean.registro.idPessoa != null}" />
-				<h:outputText value=" #{pessoaBean.registro.endereco}" rendered="#{pessoaBean.registro.endereco.idEndereco != null}" />
+				
+				
 			</h:panelGrid>
 		</h:form>
 	</f:view>
