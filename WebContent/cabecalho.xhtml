@@ -14,7 +14,7 @@
 			<p:menubar styleClass="emphasis">
 				<p:menuitem icon="ui-icon-home" value="Home" url="/faces/index.xhtml" styleClass="alerta"/>
 				
-				<p:submenu label="Municipios" icon="ui-icon-gear">
+				<p:submenu label="Locação" icon="ui-icon-gear">
 					<p:menuitem value="Incluir" url="/faces/municipio/incluirMunicipio.xhtml" />
 					<p:menuitem value="Alterar" url="/faces/municipio/alterarMunicipio.xhtml" />
 					<p:menuitem value="Excluir" url="/faces/municipio/excluirMunicipio.xhtml" />
@@ -23,7 +23,7 @@
 					<p:menuitem value="Filtrar"	url="/faces/municipio/listarMunicipiosFiltro.xhtml" />
 				</p:submenu>
 				
-				<p:submenu label="Endereços" icon="ui-icon-gear">
+				<p:submenu label="Veiculos" icon="ui-icon-gear">
 					<p:menuitem value="Incluir" url="/faces/endereco/incluiEndereco.xhtml" />
 					<p:menuitem value="Alterar" url="/faces/endereco/alterarEndereco.xhtml" />
 					<p:menuitem value="Excluir" url="/faces/endereco/excluirEndereco.xhtml" />
@@ -37,10 +37,6 @@
 					<p:menuitem value="Excluir" url="/faces/pessoa/excluirPessoa.xhtml" />
 					<p:menuitem value="Consultar" url="/faces/pessoa/consultarPessoa.xhtml" />
 					<p:menuitem value="Listar" url="/faces/pessoa/listarPessoas.xhtml" />
-				</p:submenu>
-				
-				<p:submenu label="CHAT" icon="ui-icon-gear">
-					<p:menuitem value="Entrar" url="/faces/chat/master.xhtml" />
 				</p:submenu>
 				
 				<p:menuitem value="Sair (#{acessoBean.email})" icon="ui-icon-extlink" action="#{acessoBean.logout}" styleClass="alerta"/>
